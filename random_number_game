@@ -1,0 +1,44 @@
+import random
+
+def is_valid(dig):
+    
+    if dig.isdigit() and 1 <= int(dig) <= 100:
+        return True
+    else:
+        return False
+    
+def random_game():
+    global counter
+    num = random.randint(1, 100)    
+    print('Я загадал число от 1 до 100, сможешь угадать?')
+
+    while True:
+        user_num = input()
+        while is_valid(user_num) == False:
+            print('А может быть все-таки введем целое число от 1 до 100?')
+            user_num = input()
+        user_num = int(user_num)
+        if user_num < num:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+            counter += 1
+        elif user_num > num:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+            counter += 1
+        else:
+            print(f'Вы угадали число с {counter} раза, поздравляем!')
+            print('Спасибо, что играли в числовую угадайку.')
+            print()
+            break
+
+print('Добро пожаловать в числовую угадайку')
+counter = 1
+random_game()
+
+while True:
+    print('Напишите "Старт", если хотите сыграть еще раз :)')
+    if input() == 'Старт':
+        counter = 1
+        random_game()
+    else:
+        print('Еще увидимся, до скорого!')
+        break
