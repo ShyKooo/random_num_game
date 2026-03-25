@@ -31,7 +31,9 @@ def random_game():
             break
 
 print('Добро пожаловать в числовую угадайку')
+
 counter = 1
+
 random_game()
 
 while True:
